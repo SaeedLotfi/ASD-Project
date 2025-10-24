@@ -32,5 +32,5 @@ export default function CanvasPage() {
   }, [token, setItems]);
 
   if (!token) return <div>Please <a href="/login">login</a>.</div>;
-  return <CanvasBoard items={Object.values(items)} />;
+  return <div data-testid="canvas-page"><CanvasBoard items={Object.values(items)} /></div>;
 }

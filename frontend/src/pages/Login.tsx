@@ -16,7 +16,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{ display:'grid', placeItems:'center', height:'100vh' }}>
+    <div data-testid="login-page" style={{ display:'grid', placeItems:'center', height:'100vh' }}>
       <form onSubmit={submit} style={{ display:'grid', gap:12, width:280 }}>
         <h2>Login</h2>
         <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="email" />

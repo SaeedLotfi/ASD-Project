@@ -31,13 +31,13 @@ export default function CanvasBoard({ items }: Props) {
     window.addEventListener('resize', resize, { passive: true });
 
     const draw = () => {
-      const itms = latestItemsRef.current;
+      const items = latestItemsRef.current;
       const { width, height } = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, width, height);
       ctx.fillStyle = '#111';
       ctx.fillRect(0, 0, width, height);
       ctx.fillStyle = '#4ade80';
-      for (const it of itms) {
+      for (const it of items) {
         ctx.beginPath();
         ctx.arc(it.x, it.y, 14, 0, Math.PI * 2);
         ctx.fill();
