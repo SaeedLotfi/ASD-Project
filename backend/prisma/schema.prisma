@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Shape {
+  RECT
+  CIRCLE
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items     Item[]
+}
+
+model Item {
+  id        String   @id @default(cuid())
+  name      String
+  x         Float    @default(100)
+  y         Float    @default(100)
+  shape     Shape    @default(RECT)
+  width     Float    @default(120)
+  height    Float    @default(80)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
